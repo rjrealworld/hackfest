@@ -1,8 +1,10 @@
-#include<bits/stdc++.h>
+#include <iostream.h>
+#include <bits/stdc++.h>
+
 using namespace std;
 
-void addEdge(vector <pair<int, int>> &adj, int u, int v) {
-    adj.push_back(make_pair(v, u));
+void addEdge(vector <pair<int, int>> &adj, int x, int y) {
+    adj.push_back(make_pair(y, u));
 }
 
 vector<unordered_set<int> > make_graph(int n, vector<pair<int, int> >& adj) {
@@ -17,9 +19,8 @@ void printGraph(vector<pair<int, int> >&adj, int V) {
     int user = 0;
     for (auto i: graph) {
         cout << user << ":";
-        for (auto j : i) {
+        for (auto j : i) 
             cout << j << " ";
-        }
         cout << endl;
         user++;
     }
@@ -29,9 +30,8 @@ void printGraph(vector<pair<int, int> >&adj, int V) {
 void printDeadUsers(unordered_map <int, bool> &isFollowed, int users) {
     cout << "Dead users are: ";
     for (int i = 0; i < users; i++) {
-        if (isFollowed.find(i) == isFollowed.end()) {
+        if (isFollowed.find(i) == isFollowed.end()) 
             cout << i << " ";
-        }
     }
     cout << endl;
 }
@@ -60,9 +60,8 @@ vector<int> findOrder(int V, vector<pair<int, int> >& adj) {
 
 void printSequence(vector <pair<int, int>> following, int users) {
     vector <int> v = findOrder(users, following);
-    for (int i = 0; i < v.size(); i++) {
+    for (int i = 0; i < v.size(); i++) 
         cout << v[i] << " ";
-    }
 }
 
 int main() {
@@ -78,12 +77,8 @@ int main() {
     }
 
     printGraph(adj, users);
-
-
-    //Print all dead users
     printDeadUsers(isFollowed, users);
 
-    //Print sequence
     cout << "\nCorrect sequence is: ";
     printSequence(adj, users);
     return 0;
